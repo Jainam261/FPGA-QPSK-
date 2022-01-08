@@ -51,4 +51,3 @@ module sin_gen(Clk,data_out);
     end
 
 endmodule
-
