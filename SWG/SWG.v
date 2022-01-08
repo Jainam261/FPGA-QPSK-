@@ -1,4 +1,4 @@
-module sin_gen(Clk,data_out);
+module SWG(Clk,data_out);
 
     input Clk;
     output [10:0] data_out;
