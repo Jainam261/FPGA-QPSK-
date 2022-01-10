@@ -1,11 +1,11 @@
-module SWG(Clk,data_out);
+module Test_Shift2(Clk,l,d,data_out);
 
-    input Clk;
+    input Clk,l,d;
     output [10:0] data_out;
   
     reg [10:0] sine [0:100];
 
-    integer i;  
+    integer i,reset,reset1,reset2,reset3;  
     reg [10:0] data_out; 
 
     initial begin
@@ -40,7 +40,7 @@ module SWG(Clk,data_out);
         sine[27] = 992;
         sine[28] = 982;
         sine[29] = 968;
-	      sine[30] = 951;
+	sine[30] = 951;
         sine[31] = 929;
         sine[32] = 904;
         sine[33] = 876;
@@ -90,7 +90,7 @@ module SWG(Clk,data_out);
         sine[77] = -992;
         sine[78] = -982;
         sine[79] = -968;
-	      sine[80] = -951;
+	sine[80] = -951;
         sine[81] = -929;
         sine[82] = -904;
         sine[83] = -876;
@@ -112,14 +112,51 @@ module SWG(Clk,data_out);
         sine[99] = -62;
         sine[100] = 0;
     end
+	 
+	 always@(posedge d)
+	 begin
+		  reset = 1;
+		  #40
+		  reset = 0;
+	 end
+	 
+	 always@(negedge d)
+	 begin
+		  reset1 = 1;
+		  #40
+		  reset1 = 0;
+	 end
+	 
+	 always@(posedge l)
+	 begin
+		  reset2 = 1;
+		  #40
+		  reset2 = 0;
+	 end
+	 
+	 always@(negedge l)
+	 begin
+		  reset3 = 1;
+		  #40
+		  reset3 = 0;
+	 end
     
-        always@ (posedge(Clk))
+    always@(posedge(Clk))
     begin
+	 
+		  if((reset1 | reset3) & (~d & ~l))
+		     i = 0;
+		  if((reset1 | reset2) & (~d & l))
+		     i = 25;
+		  if((reset | reset2) & (d & ~l))
+		     i = 50;
+		  if((reset | reset3) & (d & l))
+		     i = 75;
+			  
         data_out = sine[i];
-        i = i+ 1;
+        i = i+1;
         if(i == 100)
             i = 0;
     end
 
-endmodule
-
+endmodule 
