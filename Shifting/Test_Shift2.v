@@ -1,11 +1,107 @@
-module Test_Shift2(Clk,l,d,data_out);
+/*module Test_Shift2(Clk,d,l,data_out);
 
-    input Clk,l,d;
+    input Clk,d,l;
+    output [7:0] data_out;
+
+    reg [7:0] sine [0:29];
+
+    integer i,reset,reset1,reset2,reset3;  
+    reg [7:0] data_out; 
+ 
+    initial begin
+		  //i = 0;
+        sine[0] = 0;
+        sine[1] = 16;
+        sine[2] = 31;
+        sine[3] = 45;
+        sine[4] = 58;
+        sine[5] = 67;
+        sine[6] = 74;
+        sine[7] = 77;
+        sine[8] = 77;
+        sine[9] = 74;
+        sine[10] = 67;
+        sine[11] = 58;
+        sine[12] = 45;
+        sine[13] = 31;
+        sine[14] = 16;
+        sine[15] = 0;
+        sine[16] = -16;
+        sine[17] = -31;
+        sine[18] = -45;
+        sine[19] = -58;
+        sine[20] = -67;
+        sine[21] = -74;
+        sine[22] = -77;
+        sine[23] = -77;
+        sine[24] = -74;
+        sine[25] = -67;
+        sine[26] = -58;
+        sine[27] = -45;
+        sine[28] = -31;
+        sine[29] = -16;
+    end
+	 
+	 always@(posedge d)
+	 begin
+		  reset = 1;
+		  #40
+		  reset = 0;
+	 end
+	 
+	 always@(negedge d)
+	 begin
+		  reset1 = 1;
+		  #40
+		  reset1 = 0;
+	 end
+	 
+	 always@(posedge l)
+	 begin
+		  reset2 = 1;
+		  #40
+		  reset2 = 0;
+	 end
+	 
+	 always@(negedge l)
+	 begin
+		  reset3 = 1;
+		  #40
+		  reset3 = 0;
+	 end
+	
+    always@(posedge(Clk))
+    begin
+	 
+		  if((reset1 | reset3) & (~d & ~l))
+		     i = 0;
+		  if((reset1 | reset2) & (~d & l))
+		     i = 8;
+		  if((reset | reset2) & (d & ~l))
+		     i = 15;
+		  if((reset | reset3) & (d & l))
+		     i = 23;
+
+        data_out = sine[i];
+        i = i + 1;
+        if(i == 29)
+            i = 0;
+
+    end
+
+
+endmodule*/
+
+module Test_Shift2(Clk,E,O,data_out);
+
+    input Clk,E,O;
     output [10:0] data_out;
   
     reg [10:0] sine [0:100];
 
-    integer i,reset,reset1,reset2,reset3;  
+    integer i;
+	 reg OP,ON,EP,EN;
+	 
     reg [10:0] data_out; 
 
     initial begin
@@ -40,7 +136,7 @@ module Test_Shift2(Clk,l,d,data_out);
         sine[27] = 992;
         sine[28] = 982;
         sine[29] = 968;
-	sine[30] = 951;
+	      sine[30] = 951;
         sine[31] = 929;
         sine[32] = 904;
         sine[33] = 876;
@@ -90,7 +186,7 @@ module Test_Shift2(Clk,l,d,data_out);
         sine[77] = -992;
         sine[78] = -982;
         sine[79] = -968;
-	sine[80] = -951;
+	      sine[80] = -951;
         sine[81] = -929;
         sine[82] = -904;
         sine[83] = -876;
@@ -113,44 +209,44 @@ module Test_Shift2(Clk,l,d,data_out);
         sine[100] = 0;
     end
 	 
-	 always@(posedge d)
+	 always@(posedge O)
 	 begin
-		  reset = 1;
+		  OP = 1;
 		  #40
-		  reset = 0;
+		  OP = 0;
 	 end
 	 
-	 always@(negedge d)
+	 always@(negedge O)
 	 begin
-		  reset1 = 1;
+		  ON = 1;
 		  #40
-		  reset1 = 0;
+		  ON = 0;
 	 end
 	 
-	 always@(posedge l)
+	 always@(posedge E)
 	 begin
-		  reset2 = 1;
+		  EP = 1;
 		  #40
-		  reset2 = 0;
+		  EP = 0;
 	 end
 	 
-	 always@(negedge l)
+	 always@(negedge E)
 	 begin
-		  reset3 = 1;
+		  EN = 1;
 		  #40
-		  reset3 = 0;
+		  EN = 0;
 	 end
     
     always@(posedge(Clk))
     begin
 	 
-		  if((reset1 | reset3) & (~d & ~l))
+		  if((ON | EN) & (~O & ~E))
 		     i = 0;
-		  if((reset1 | reset2) & (~d & l))
+		  if((ON | EP) & (~O & E))
 		     i = 25;
-		  if((reset | reset2) & (d & ~l))
+		  if((OP | EN) & (O & ~E))
 		     i = 50;
-		  if((reset | reset3) & (d & l))
+		  if((OP | EP) & (O & E))
 		     i = 75;
 			  
         data_out = sine[i];
