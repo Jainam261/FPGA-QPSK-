@@ -8,7 +8,7 @@ module QPSK_Mod_TB;
   begin
     clk = 0;
     Clk = 0;
-    /*data = 1;
+    data = 1;
     #8500       //8500
     data = 0;
     #10000      //18500
@@ -18,7 +18,7 @@ module QPSK_Mod_TB;
     #13000      //52000     
     data = 0;
     #500
-    data = 1;*/
+    data = 1;
     data = 0;
     #24500
     data = 1;
