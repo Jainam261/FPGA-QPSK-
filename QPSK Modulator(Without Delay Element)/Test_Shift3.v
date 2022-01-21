@@ -115,10 +115,10 @@ module Test_Shift3(Clk,E,O,data_out);
         sine[100] = 0;
     end
 	 
-	 POSEDGE_Detactor p1(Clk,O,OP);
-	 POSEDGE_Detactor p2(Clk,E,EP);
-	 NEGEDGE_Detactor n1(Clk,O,ON);
-	 NEGEDGE_Detactor n2(Clk,E,EN);
+	 POSEDGE_Detector p1(Clk,O,OP);
+	 POSEDGE_Detector p2(Clk,E,EP);
+	 NEGEDGE_Detector n1(Clk,O,ON);
+	 NEGEDGE_Detector n2(Clk,E,EN);
 	 
     always@(posedge(Clk))
     begin
@@ -143,7 +143,7 @@ endmodule
 
 
 
-module POSEDGE_Detactor(clk,data,pulse);
+module POSEDGE_Detector(clk,data,pulse);
 
 input clk;
 input data;
@@ -169,7 +169,7 @@ endmodule
 
 
 
-module NEGEDGE_Detactor(clk,data,pulse);
+module NEGEDGE_Detector(clk,data,pulse);
 
 input clk;
 input data;
