@@ -1,19 +1,16 @@
-module Conventional_Modulator(Clk,E,O,data_out);
+module Conventional_Modulator(Clk,E,O,data_out,I_out,Q_out);
 
     input Clk,E,O;
-    output [10:0] data_out;
-  
+    output data_out,I_out,Q_out;
+    
+	 integer i;
     reg [10:0] sine [0:100];
 	 reg [10:0] sine_n [0:100];
 	 reg [10:0] cosine [0:100];
 	 reg [10:0] cosine_n [0:100];
-	 reg [10:0] I_out;
-	 reg [10:0] Q_out;
- 
-    integer i;
-	 wire OP,ON,EP,EN;
-	 
-    reg [10:0] data_out; 
+	 reg signed [10:0] I_out;
+	 reg signed [10:0] Q_out;	 
+    reg signed [11:0] data_out; 
 
     initial begin
         i = 0;
@@ -118,8 +115,7 @@ module Conventional_Modulator(Clk,E,O,data_out);
         sine[97] = -187;
         sine[98] = -125;
         sine[99] = -62;
-        sine[100] = 0;
-		  
+        sine[100] = 0;		  
 		  
 		  cosine[0] = 1000;
         cosine[1] = 998;
@@ -221,8 +217,7 @@ module Conventional_Modulator(Clk,E,O,data_out);
         cosine[97] = 982;
         cosine[98] = 992;
         cosine[99] = 998;
-        cosine[100] = 1000;
-		  
+        cosine[100] = 1000;		  
 		 
         sine_n[0] = 0;
         sine_n[1] = -62;
@@ -324,8 +319,7 @@ module Conventional_Modulator(Clk,E,O,data_out);
         sine_n[97] = 187;
         sine_n[98] = 125;
         sine_n[99] = 62;
-		  sine_n[0] = 0;
-		  
+		  sine_n[0] = 0;	  
 		  
         cosine_n[0] = -1000;
         cosine_n[1] = -998;
@@ -443,7 +437,7 @@ module Conventional_Modulator(Clk,E,O,data_out);
 		  else
 			Q_out = cosine_n[i];
 			
-		  data_out = Q_out - I_out;
+		  data_out = Q_out + I_out;
 			  
         i = i+1;
         if(i == 100)
