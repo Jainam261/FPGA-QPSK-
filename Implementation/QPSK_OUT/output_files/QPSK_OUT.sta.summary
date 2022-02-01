@@ -1,0 +1,77 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow Model Setup 'pin_name5'
+Slack : -6.218
+TNS   : -230.597
+
+Type  : Slow Model Setup 'pin_name6'
+Slack : -3.575
+TNS   : -97.001
+
+Type  : Slow Model Setup 'pin_name2'
+Slack : -3.382
+TNS   : -93.979
+
+Type  : Slow Model Hold 'pin_name6'
+Slack : 0.620
+TNS   : 0.000
+
+Type  : Slow Model Hold 'pin_name5'
+Slack : 0.621
+TNS   : 0.000
+
+Type  : Slow Model Hold 'pin_name2'
+Slack : 0.968
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'pin_name5'
+Slack : -1.631
+TNS   : -82.283
+
+Type  : Slow Model Minimum Pulse Width 'pin_name2'
+Slack : -1.631
+TNS   : -37.069
+
+Type  : Slow Model Minimum Pulse Width 'pin_name6'
+Slack : -1.631
+TNS   : -37.069
+
+Type  : Fast Model Setup 'pin_name5'
+Slack : -1.726
+TNS   : -50.783
+
+Type  : Fast Model Setup 'pin_name6'
+Slack : -0.853
+TNS   : -20.407
+
+Type  : Fast Model Setup 'pin_name2'
+Slack : -0.706
+TNS   : -19.012
+
+Type  : Fast Model Hold 'pin_name6'
+Slack : 0.238
+TNS   : 0.000
+
+Type  : Fast Model Hold 'pin_name5'
+Slack : 0.241
+TNS   : 0.000
+
+Type  : Fast Model Hold 'pin_name2'
+Slack : 0.355
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'pin_name5'
+Slack : -1.380
+TNS   : -67.380
+
+Type  : Fast Model Minimum Pulse Width 'pin_name2'
+Slack : -1.380
+TNS   : -30.380
+
+Type  : Fast Model Minimum Pulse Width 'pin_name6'
+Slack : -1.380
+TNS   : -30.380
+
+------------------------------------------------------------
