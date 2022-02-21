@@ -1,0 +1,41 @@
+|Block2
+clock_out <= check2:inst.clock_out
+Clk => check2:inst.Clk
+E => check2:inst.E
+O => check2:inst.O
+I_out[0] <= check2:inst.I_out[0]
+I_out[1] <= check2:inst.I_out[1]
+I_out[2] <= check2:inst.I_out[2]
+I_out[3] <= check2:inst.I_out[3]
+I_out[4] <= check2:inst.I_out[4]
+I_out[5] <= check2:inst.I_out[5]
+I_out[6] <= check2:inst.I_out[6]
+I_out[7] <= check2:inst.I_out[7]
+
+
+|Block2|check2:inst
+Clk => clock_out~reg0.CLK
+Clk => counter[0].CLK
+Clk => counter[1].CLK
+Clk => counter[2].CLK
+Clk => counter[3].CLK
+Clk => counter[4].CLK
+E => I_out.OUTPUTSELECT
+E => I_out.OUTPUTSELECT
+E => I_out.OUTPUTSELECT
+E => I_out.OUTPUTSELECT
+E => I_out.OUTPUTSELECT
+E => I_out.OUTPUTSELECT
+E => I_out.OUTPUTSELECT
+O => ~NO_FANOUT~
+I_out[0] <= I_out[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+I_out[1] <= I_out[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+I_out[2] <= I_out[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+I_out[3] <= I_out[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+I_out[4] <= I_out[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+I_out[5] <= I_out[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+I_out[6] <= I_out[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+I_out[7] <= I_out[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+clock_out <= clock_out~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
